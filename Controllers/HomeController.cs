@@ -1,12 +1,25 @@
 ﻿using System;
-using System.ComponentModel.Design;
-using System.Reflection.PortableExecutable;
+using System.Net;
 using System.Diagnostics;
+using System.Buffers.Text;
 using Microsoft.AspNetCore.Mvc;
 using _4to_ProyectoFinal.Models;
+using System.ComponentModel.Design;
+using System.Reflection.PortableExecutable;
 
 namespace _4to_ProyectoFinal.Controllers;
 
+/*public class CargarUsuarioAttribute : ActionFilterAttribute{
+    public override void OnActionExecuting(ActionExecutingContext filterContext){
+        var cookie = filterContext.HttpContext.Request.Cookies["log"];
+        if (cookie != null){
+            filterContext.Controller.ViewBag.Log = cookie.Value;
+        }
+        base.OnActionExecuting(filterContext);
+    }
+}
+
+[CargarUsuario]*/
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
