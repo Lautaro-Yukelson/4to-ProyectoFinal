@@ -28,6 +28,7 @@ let serpiente = {
 	],
 	direccion: 39,
 };
+let prendio = false;
 
 function crearTablero() {
 	canvas.width = ANCHO * TAMAÑO_BLOQUE;
@@ -142,9 +143,9 @@ function fin() {
 			console.log("Perdiste!");
 			gameContainer.style.display = "none";
 			divFin.innerHTML = "<h1>Perdiste :(</h1><p>Click para reiniciar</p>";
-			divFin.style.background = "red";
+			divFin.style.background = "linear-gradient(to right bottom, rgb(0, 0, 0), rgb(31, 4, 37), rgb(31, 18, 37), rgb(48, 23, 61), rgb(55, 27, 68), rgb(71, 33, 88), rgb(78, 25, 119), rgb(100, 29, 155), rgb(124, 58, 237))";
 			divFin.style.display = "flex";
-		}, 1000);
+		}, 10);
 	}
 }
 
@@ -207,14 +208,20 @@ function moverse(direccion) {
 }
 
 function start() {
-	presentacion.style.display = "none";
-	gameContainer.style.display = "flex";
-	crearTablero();
-	let interval = setInterval(() => moverse(serpiente.direccion), 500);
-	document.addEventListener("keydown", (event) => {
-		clearInterval(interval);
-		moverse(event.keyCode);
-		interval = setInterval(() => moverse(serpiente.direccion), 500);
-	});
-	actualizar();
+	if (!prendio){
+		let interval = setInterval(() => moverse(serpiente.direccion), 500);
+		document.addEventListener("keydown", (event) => {
+			clearInterval(interval);
+			moverse(event.keyCode);
+			interval = setInterval(() => moverse(serpiente.direccion), 500);
+			actualizar();
+		});
+		prendio = true;
+	}
+	
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+	crearTablero();	
+	actualizar();
+})
