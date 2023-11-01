@@ -4,3 +4,9 @@
     <input class="form-control" type="email" name="Mail" id="Mail" placeholder="Correo electronico..." required>
     <button class="btn btn-primary" type="submit">Registrarse</button>
 </form>
+
+<script>
+    window.addEventListener("DOMContentLoaded", (event) => {
+        checkLogin(@ViewBag.Log);
+    });
+</script>

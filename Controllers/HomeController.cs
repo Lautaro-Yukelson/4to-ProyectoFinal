@@ -32,25 +32,38 @@ public class HomeController : Controller
     public IActionResult Index()
     {
         ViewBag.Juegos = HakunaMatata.ObtenerJuegos();
+        ViewBag.Log = HakunaMatata.ObtenerLogStatus(HttpContext);
         return View();
     }
 
     public IActionResult Login(){
+        ViewBag.Log = HakunaMatata.ObtenerLogStatus(HttpContext);
         return View();
     }
 
     public IActionResult LoginAction(string Nombre, string Contrasena){
         ViewBag.Log = HakunaMatata.IniciarSesion(HttpContext, Nombre, Contrasena);
-        return View("Index", "Home");
+        if (ViewBag.Log == 1){
+            return RedirectToAction("Index", "Home");
+        } else {
+            return View("Login", "Home");
+        }
     }
 
     public IActionResult Register(){
+        ViewBag.Log = HakunaMatata.ObtenerLogStatus(HttpContext);
+        if (ViewBag.Log == "1"){
+            return RedirectToAction("Index", "Home");
+        } else {
+            return View("Register", "Home");
+        }
         return View();
     }
 
     public IActionResult RegisterAction(string Nombre, string Contrasena, string Mail){
         string hashContrasena = BCrypt.Net.BCrypt.HashPassword(Contrasena);
         ViewBag.Log = HakunaMatata.Registrarse(HttpContext, Nombre, hashContrasena, Mail);
+        ViewBag.PopUP = 1;
         return View("Index", "Home");
     }
 

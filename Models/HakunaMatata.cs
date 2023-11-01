@@ -1,3 +1,4 @@
+using System.ComponentModel.Design.Serialization;
 using System.Buffers.Text;
 using System;
 using BCrypt.Net;
@@ -55,12 +56,21 @@ public static class HakunaMatata{
 
             return logStatus;
         } else {
-            return -2;
+            return -2;  
         }
     }
 
     public static void Logout(HttpContext context){
         foreach (var cookie in context.Request.Cookies.Keys) { context.Response.Cookies.Delete(cookie); }
+    }   
+
+    public static string ObtenerLogStatus(HttpContext context){
+        var cookie = context.Request.Cookies["log"];
+        if (cookie == null){
+            return "null";
+        } else {
+            return cookie;
+        }
     }
 
     public static Usuario ObtenerUsuario(string Nombre){

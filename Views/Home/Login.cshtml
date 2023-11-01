@@ -3,3 +3,9 @@
     <input class="form-control" type="password" name="Contrasena" id="Contrasena" placeholder="Contraseña..." required>
     <button class="btn btn-primary" type="submit">Iniciar Sesión</button>
 </form>
+
+<script>
+    window.addEventListener("DOMContentLoaded", (event) => {
+        checkLogin(@ViewBag.Log);
+    });
+</script>

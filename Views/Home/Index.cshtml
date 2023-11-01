@@ -1,3 +1,9 @@
 ﻿@{
     ViewData["Title"] = "Inicio";
 }
+
+<script>
+    window.addEventListener("DOMContentLoaded", (event) => {
+        checkLogin(@ViewBag.Log);
+    });
+</script>
