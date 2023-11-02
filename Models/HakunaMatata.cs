@@ -19,31 +19,31 @@ using System.Runtime.InteropServices.ComTypes;
 
 public static class HakunaMatata{
 
-    public static int IniciarSesion(HttpContext context, string Nombre, string Contrasena){
+    public static string IniciarSesion(HttpContext context, string Nombre, string Contrasena){
         Usuario user = HakunaMatata.ObtenerUsuario(Nombre);
         if (user != null){
             if (BCrypt.Net.BCrypt.Verify(Contrasena, user.Contrasena)){ 
-                int logStatus = 1;
+                string logStatus = "1";
 
                 CookieOptions idUser = new CookieOptions { Expires = DateTime.Now.AddDays(7) };
                 context.Response.Cookies.Append("idUser", user.idUsuario.ToString(), idUser);
 
                 CookieOptions log = new CookieOptions { Expires = DateTime.Now.AddDays(7) };
-                context.Response.Cookies.Append("log", logStatus.ToString(), log);
+                context.Response.Cookies.Append("log", logStatus, log);
 
                 return logStatus;
             } else {
-                return 0; 
+                return "0"; 
             }
         } else {
-            return -1;
+            return "-1";
         }
     }
 
-    public static int Registrarse(HttpContext context, string Nombre, string Contrasena, string Mail){
+    public static string Registrarse(HttpContext context, string Nombre, string Contrasena, string Mail){
         Usuario user = HakunaMatata.ObtenerUsuario(Nombre);
         if (user == null){
-            int logStatus = 1;
+            string logStatus = "1";
             BD.AgregarUsuario(new Usuario(Nombre, Contrasena, Mail, "token"));
 
             user = HakunaMatata.ObtenerUsuario(Nombre);
@@ -52,11 +52,11 @@ public static class HakunaMatata{
             context.Response.Cookies.Append("idUser", user.idUsuario.ToString(), idUser);
 
             CookieOptions log = new CookieOptions { Expires = DateTime.Now.AddDays(7) };
-            context.Response.Cookies.Append("log", logStatus.ToString(), log);
+            context.Response.Cookies.Append("log", logStatus, log);
 
             return logStatus;
         } else {
-            return -2;  
+            return "-2";  
         }
     }
 

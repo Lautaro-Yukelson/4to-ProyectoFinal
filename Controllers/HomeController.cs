@@ -43,9 +43,11 @@ public class HomeController : Controller
 
     public IActionResult LoginAction(string Nombre, string Contrasena){
         ViewBag.Log = HakunaMatata.IniciarSesion(HttpContext, Nombre, Contrasena);
-        if (ViewBag.Log == 1){
-            return RedirectToAction("Index", "Home");
+        if (ViewBag.Log == "1"){
+            ViewBag.AlertSesion = 1;
+            return View("Index", "Home");
         } else {
+            ViewBag.AlertSesion = 0;
             return View("Login", "Home");
         }
     }
@@ -53,11 +55,10 @@ public class HomeController : Controller
     public IActionResult Register(){
         ViewBag.Log = HakunaMatata.ObtenerLogStatus(HttpContext);
         if (ViewBag.Log == "1"){
-            return RedirectToAction("Index", "Home");
+            return View("Index", "Home");
         } else {
             return View("Register", "Home");
         }
-        return View();
     }
 
     public IActionResult RegisterAction(string Nombre, string Contrasena, string Mail){
