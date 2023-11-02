@@ -1,3 +1,4 @@
+using System.Buffers.Text;
 using System.Reflection.Metadata;
 using System.ComponentModel.DataAnnotations.Schema;
 using System;
@@ -21,17 +22,17 @@ public static class BD
 {
     private static string _connectionString = "Server=localhost;DataBase=HakunaMatata;Trusted_Connection=True;";
 
-    public static Usuario ObtenerUsuario(string Nombre){
-        string sql = "SELECT * FROM Usuarios WHERE Nombre = @Nombre";
+    public static Usuario ObtenerUsuario(string Nombre, string idUsuario){
+        string sql = "SELECT * FROM Usuarios WHERE Nombre = @Nombre OR idUsuario = @idUsuario";
         using (SqlConnection db = new SqlConnection(_connectionString)){
-            return db.QueryFirstOrDefault<Usuario>(sql, new {Nombre});
+            return db.QueryFirstOrDefault<Usuario>(sql, new {Nombre, idUsuario});
         }
     }
 
     public static void AgregarUsuario(Usuario user){
-        string sql = "INSERT INTO Usuarios (Nombre, Contrasena, Mail, Token) VALUES (@Nombre, @Contrasena, @Mail, @Token)";
+        string sql = "INSERT INTO Usuarios (Nombre, Contrasena, Mail, FechaNacimiento, FotoPerfil, Token) VALUES (@Nombre, @Contrasena, @Mail, @FechaNacimiento, @FotoPerfil, @Token)";
         using (SqlConnection db = new SqlConnection(_connectionString)){
-            db.Execute(sql, new {user.Nombre, user.Contrasena, user.Mail, user.Token});
+            db.Execute(sql, new {user.Nombre, user.Contrasena, user.Mail, user.FechaNacimiento, user.FotoPerfil, user.Token});
         }
     }
 

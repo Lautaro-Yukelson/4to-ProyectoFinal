@@ -1,3 +1,4 @@
+using System.Diagnostics.Contracts;
 using System.ComponentModel.Design.Serialization;
 using System.Buffers.Text;
 using System;
@@ -40,11 +41,11 @@ public static class HakunaMatata{
         }
     }
 
-    public static string Registrarse(HttpContext context, string Nombre, string Contrasena, string Mail){
+    public static string Registrarse(HttpContext context, string Nombre, string Contrasena, string Mail, DateTime FechaNacimiento, string FotoPerfil){
         Usuario user = HakunaMatata.ObtenerUsuario(Nombre);
         if (user == null){
             string logStatus = "1";
-            BD.AgregarUsuario(new Usuario(Nombre, Contrasena, Mail, "token"));
+            BD.AgregarUsuario(new Usuario(Nombre, Contrasena, Mail, FechaNacimiento, FotoPerfil,"token"));
 
             user = HakunaMatata.ObtenerUsuario(Nombre);
 
@@ -73,8 +74,17 @@ public static class HakunaMatata{
         }
     }
 
+    public static string ObtenerIdUsuario(HttpContext context){
+        var cookie = context.Request.Cookies["idUser"];
+        if (cookie == null){
+            return "null";
+        } else {
+            return cookie;
+        }
+    }
+
     public static Usuario ObtenerUsuario(string Nombre){
-        return BD.ObtenerUsuario(Nombre);
+        return BD.ObtenerUsuario(Nombre, "");
     }
 
     public static List<Juego> ObtenerJuegos(){

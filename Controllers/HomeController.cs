@@ -1,38 +1,37 @@
 ﻿using System;
+using System.IO;
 using System.Net;
 using System.Diagnostics;
 using System.Buffers.Text;
 using Microsoft.AspNetCore.Mvc;
 using _4to_ProyectoFinal.Models;
 using System.ComponentModel.Design;
+using Microsoft.AspNetCore.Hosting;
+using System.Security.AccessControl;
 using System.Reflection.PortableExecutable;
 
 namespace _4to_ProyectoFinal.Controllers;
 
-/*public class CargarUsuarioAttribute : ActionFilterAttribute{
-    public override void OnActionExecuting(ActionExecutingContext filterContext){
-        var cookie = filterContext.HttpContext.Request.Cookies["log"];
-        if (cookie != null){
-            filterContext.Controller.ViewBag.Log = cookie.Value;
-        }
-        base.OnActionExecuting(filterContext);
-    }
-}
-
-[CargarUsuario]*/
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private IWebHostEnvironment Environment;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(IWebHostEnvironment environment)
     {
-        _logger = logger;
+        Environment = environment;
     }
 
     public IActionResult Index()
     {
         ViewBag.Juegos = HakunaMatata.ObtenerJuegos();
         ViewBag.Log = HakunaMatata.ObtenerLogStatus(HttpContext);
+        return View();
+    }
+
+    public IActionResult Perfil(){
+        ViewBag.Log = HakunaMatata.ObtenerLogStatus(HttpContext);
+        ViewBag.Usuario = BD.ObtenerUsuario("", HakunaMatata.ObtenerIdUsuario(HttpContext));
         return View();
     }
 
@@ -61,11 +60,26 @@ public class HomeController : Controller
         }
     }
 
-    public IActionResult RegisterAction(string Nombre, string Contrasena, string Mail){
+    [HttpPost]
+    public IActionResult RegisterAction(string Nombre, string Contrasena, DateTime FechaNacimiento, string Mail, IFormFile MyFile = null){
+        string urlArchivo = "";
+        if (MyFile != null){
+            SubirFotoPerfil(Nombre, MyFile);
+            urlArchivo = @$"\assets\fotosPerfil\foto-{Nombre}{System.IO.Path.GetExtension(MyFile.FileName)}";
+        } else {
+            urlArchivo = "/assets/fotosPerfil/foto-anonimo.jpg";
+        }
         string hashContrasena = BCrypt.Net.BCrypt.HashPassword(Contrasena);
-        ViewBag.Log = HakunaMatata.Registrarse(HttpContext, Nombre, hashContrasena, Mail);
+        ViewBag.Log = HakunaMatata.Registrarse(HttpContext, Nombre, hashContrasena, Mail, FechaNacimiento, urlArchivo);
         ViewBag.PopUP = 1;
         return View("Index", "Home");
+    }
+
+    public void SubirFotoPerfil(string Nombre, IFormFile MyFile){
+        string wwwRootLocal = this.Environment.ContentRootPath + @$"\wwwroot\assets\fotosPerfil\foto-{Nombre}{System.IO.Path.GetExtension(MyFile.FileName)}";
+        using (var stream = System.IO.File.Create(wwwRootLocal)){
+            MyFile.CopyToAsync(stream);
+        }
     }
 
     public IActionResult Logout(){

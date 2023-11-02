@@ -1,0 +1,9 @@
+@{
+    ViewData["Title"] = "Perfil";
+    string fecha = ((DateTime)ViewBag.Usuario.FechaNacimiento).ToString("dd/MM/yyyy");
+}
+
+<h1>@ViewBag.Usuario.Nombre</h1>
+<h1>@ViewBag.Usuario.Mail<h1>
+<h1>@fecha</h1>
+<img src="@Html.Raw(ViewBag.Usuario.FotoPerfil)">
