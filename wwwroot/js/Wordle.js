@@ -1,5 +1,4 @@
-import { realDictionary } from './dictionary.js';
-
+import { realDictionary } from './Wordle-Dictionary.js';
 const dictionary = realDictionary;
 const state = {
   secret: dictionary[Math.floor(Math.random() * dictionary.length)],

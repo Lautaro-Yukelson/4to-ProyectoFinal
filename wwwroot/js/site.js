@@ -78,3 +78,35 @@ function addFriend(){
         allowOutsideClick: () => !Swal.isLoading()
     });
 }
+
+window.addEventListener("DOMContentLoaded", () => {
+    const gameContainer = document.getElementById("gameContainer");
+    const juego = document.getElementById("idJuego").value;
+    switch (juego){
+        case "Tetris":
+            gameContainer.innerHTML = `
+            <div class="TetrisContainer" id="TetrisContainer">
+                <h1>Tetris</h1>
+                <canvas id="TetrisCanvas"></canvas>
+                <div class="TetrisBot">
+                    <strong>Puntos: <span class="puntos">0</span></strong>
+                </div>
+            </div>
+            <div class="TetrisPerdiste" id="TetrisPerdiste">
+                <h1>Perdiste...</h1>
+                <strong>Puntos: <span class="TetrisPuntos">0</span></strong>
+                <p>Click para volver a comenzar</p>
+            </div>`;
+            break;
+        case "Snake":
+            break;
+        case "2048":
+            break;
+        case "Wordle":
+            break;
+        case "Buscaminas":
+            break;
+        default:
+            break;
+    }
+});
