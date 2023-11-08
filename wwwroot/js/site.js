@@ -39,3 +39,38 @@
         }
     }
 }
+
+function addFriend(){
+    Swal.fire({
+        title: "¿A quien le quiere enviar una solicitud de amistad?",
+        input: "text",
+        inputAttributes: {
+          autocapitalize: "off",
+          placeholder: "Nombre de usuario..."
+        },
+        showCancelButton: true,
+        confirmButtonText: "Enviar",
+        cancelButtonText: "Cancelar",
+        showLoaderOnConfirm: true,
+        preConfirm: async (nombreUsuario) => {
+            $.ajax({
+                type: 'POST',
+                dataType: 'JSON',
+                url: '/Home/ObtenerActoresAjax',
+                data: {nombreUsuario},
+                success:
+                    function (response){
+                        console.log("Enviada");
+                    }
+            });
+        },
+        allowOutsideClick: () => !Swal.isLoading()
+    }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: `${result.value.login}'s avatar`,
+            imageUrl: result.value.avatar_url
+          });
+        }
+    });
+}

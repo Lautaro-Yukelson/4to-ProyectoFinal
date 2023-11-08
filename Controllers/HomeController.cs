@@ -82,6 +82,10 @@ public class HomeController : Controller
         }
     }
 
+    public int EnviarSolicitud(string nombreUsuario){
+        
+    }
+
     public IActionResult Logout(){
         HakunaMatata.Logout(HttpContext);
         return RedirectToAction("Index", "Home");
