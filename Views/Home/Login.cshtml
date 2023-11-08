@@ -2,11 +2,27 @@
     ViewData["Title"] = "Iniciar Sesión";
 }
 
-<form method="post" action="LoginAction">
-    <input class="form-control" type="text" name="Nombre" id="Nombre" placeholder="Nombre de usuario..." required>
-    <input class="form-control" type="password" name="Contrasena" id="Contrasena" placeholder="Contraseña..." required>
-    <button class="btn btn-primary" type="submit">Iniciar Sesión</button>
-</form>
+<div class="login-box">
+    <h2>Login</h2>
+    <form method="post" action="LoginAction">
+      <div class="user-box">
+        <input class="form-control" type="text" name="Nombre" id="Nombre" required>
+        <label>Usuario</label>
+      </div>
+      <div class="user-box">
+        <input class="form-control" type="password" name="Contrasena" id="Contrasena" required>
+        <label>Contraseña</label>
+      </div>
+      <button class="btn btn-primary" type="submit">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Iniciar Sesión
+      </button>
+    </form>
+  </div> 
+
 
 <script>
     window.addEventListener("DOMContentLoaded", (event) => {

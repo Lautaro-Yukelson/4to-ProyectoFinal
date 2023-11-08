@@ -2,14 +2,36 @@
     ViewData["Title"] = "Registrarse";
 }
 
-<form method="post" action="RegisterAction" enctype="multipart/form-data">
-    <input class="form-control" type="text" name="Nombre" id="Nombre" placeholder="Nombre de usuario..." required>
-    <input class="form-control" type="password" name="Contrasena" id="Contrasena" placeholder="Contraseña..." required>
-    <input class="form-control" type="email" name="Mail" id="Mail" placeholder="Correo electronico..." required>
-    <input class="form-control" type="date" name="FechaNacimiento" id="FechaNacimiento" placeholder="Fecha de nacimiento..." required>
-    <input class="form-control" type="file" name="MyFile" id="MyFile" placeholder="Foto de perfil...">
-    <button class="btn btn-primary" type="submit">Registrarse</button>
-</form>
+<div class="login-box">
+    <h2>Login</h2>
+    <form method="post" action="RegisterAction" enctype="multipart/form-data">
+      <div class="user-box">
+        <input class="form-control" type="text" name="Nombre" id="Nombre" required>
+        <label>Usuario</label>
+      </div>
+      <div class="user-box">
+        <input class="form-control" type="password" name="Contrasena" id="Contrasena" required>
+        <label>Contraseña</label>
+      </div>
+      <div class="user-box">
+        <input class="form-control" type="email" name="Mail" id="Mail" required>
+        <label>Correo electronico</label>
+      </div>
+      <div class="user-box">
+        <input class="form-control" type="date" name="FechaNacimiento" id="FechaNacimiento" placeholder="" required>
+        <label>Fecha de nacimiento</label>
+      </div>
+      <input class="form-control" type="file" name="MyFile" id="MyFile" placeholder="Foto de perfil...">
+      <button class="btn btn-primary" type="submit">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Iniciar Sesión
+      </button>
+    </form>
+  </div> 
+
 
 <script>
     window.addEventListener("DOMContentLoaded", (event) => {
