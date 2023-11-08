@@ -1,3 +1,5 @@
+using System.Diagnostics;
+using System.Runtime.InteropServices.ComTypes;
 using System.Buffers.Text;
 using System.Reflection.Metadata;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -48,5 +50,14 @@ public static class BD
         using (SqlConnection db = new SqlConnection(_connectionString)){
             return db.Query<Puntaje>(sql, new {idJuego}).ToList();
         }
+    }
+
+    public static Usuario AgregarAmistad(string nombreUsuario, string idUser){
+        Usuario user = ObtenerUsuario(nombreUsuario, "0");
+        string sql = "INSERT INTO Amistades(idUsuario1, idUsuario2, Estado) VALUES (@idUsuario1, @idUsuario2, 2)";
+        using (SqlConnection db = new SqlConnection(_connectionString)){
+            db.Execute(sql, new {idUsuario1 = Int32.Parse(idUser), idUsuario2 = user.idUsuario});
+        }
+        return user;
     }
 }

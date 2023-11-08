@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.IO.Compression;
+using System;
 using System.IO;
 using System.Net;
 using System.Diagnostics;
@@ -26,6 +27,12 @@ public class HomeController : Controller
     {
         ViewBag.Juegos = HakunaMatata.ObtenerJuegos();
         ViewBag.Log = HakunaMatata.ObtenerLogStatus(HttpContext);
+        return View();
+    }
+
+    [HttpGet]
+    public IActionResult Juego(int juego){
+        ViewBag.Juego = juego;
         return View();
     }
 
@@ -81,9 +88,9 @@ public class HomeController : Controller
             MyFile.CopyToAsync(stream);
         }
     }
-
-    public int EnviarSolicitud(string nombreUsuario){
-        return 0;   
+ 
+    [HttpPost] public Usuario EnviarSolicitudAJAX(string nombreUsuario){
+        return BD.AgregarAmistad(nombreUsuario, HakunaMatata.ObtenerIdUsuario(HttpContext));
     }
 
     public IActionResult Logout(){
