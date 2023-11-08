@@ -45,8 +45,8 @@ function addFriend(){
         title: "¿A quien le quiere enviar una solicitud de amistad?",
         input: "text",
         inputAttributes: {
-          autocapitalize: "off",
-          placeholder: "Nombre de usuario..."
+            autocapitalize: "off",
+            placeholder: "Nombre de usuario..."
         },
         showCancelButton: true,
         confirmButtonText: "Enviar",
@@ -56,21 +56,25 @@ function addFriend(){
             $.ajax({
                 type: 'POST',
                 dataType: 'JSON',
-                url: '/Home/ObtenerActoresAjax',
+                url: '/Home/EnviarSolicitudAJAX',
                 data: {nombreUsuario},
                 success:
                     function (response){
-                        console.log("Enviada");
-                    }
+                        Swal.fire({
+                            title: `Solicitud enviada a ${response.nombre}`,
+                            imageUrl: response.fotoPerfil
+                        });
+                    },
+                error:
+                    function(){
+                        Swal.fire({
+                            icon: "error",
+                            title: "Error",
+                            text: "El usuario ingresado no existe",
+                        });
+                    }   
             });
         },
         allowOutsideClick: () => !Swal.isLoading()
-    }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire({
-            title: `${result.value.login}'s avatar`,
-            imageUrl: result.value.avatar_url
-          });
-        }
     });
 }
