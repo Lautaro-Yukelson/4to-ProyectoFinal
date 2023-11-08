@@ -83,7 +83,7 @@ public class HomeController : Controller
     }
 
     public int EnviarSolicitud(string nombreUsuario){
-        
+        return 0;   
     }
 
     public IActionResult Logout(){

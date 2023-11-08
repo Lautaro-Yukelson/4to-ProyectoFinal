@@ -2,6 +2,35 @@
     ViewData["Title"] = "Inicio";
 }
 
+<h1 class="title">HakunaMatata</h1>
+    <div class="container">
+        <div class="card">
+            <div class="neon_card" id="2048">
+                <a href="./2048/index.html" class="m neon-button">JUGAR</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="neon_card" id="buscaminas">
+                <a href="../../buscaminas-main/index.html" class="m neon-button">JUGAR</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="neon_card" id="snake">
+                <a href="./snake-main/" class="m neon-button">JUGAR</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="neon_card" id="tetris">
+                <a href="./tetris-main/index.html" class="m neon-button" >JUGAR</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="neon_card" id="wordle">
+                <a href="./wordle/index.html" class="m neon-button" >JUGAR</a>
+            </div>
+        </div>
+    </div>
+
 <script>
     window.addEventListener("DOMContentLoaded", (event) => {
         checkLogin(@ViewBag.Log, @ViewBag.AlertSesion);

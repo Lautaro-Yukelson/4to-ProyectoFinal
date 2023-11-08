@@ -592,23 +592,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\47434208\\.nuget\\packages\\": {},
+    "C:\\Users\\47569125\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\47434208\\Desktop\\4to-ProyectoFinal\\4to-ProyectoFinal.csproj",
+      "projectUniqueName": "C:\\Users\\47569125\\Desktop\\4to-ProyectoFinal\\4to-ProyectoFinal.csproj",
       "projectName": "4to-ProyectoFinal",
-      "projectPath": "C:\\Users\\47434208\\Desktop\\4to-ProyectoFinal\\4to-ProyectoFinal.csproj",
-      "packagesPath": "C:\\Users\\47434208\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\47434208\\Desktop\\4to-ProyectoFinal\\obj\\",
+      "projectPath": "C:\\Users\\47569125\\Desktop\\4to-ProyectoFinal\\4to-ProyectoFinal.csproj",
+      "packagesPath": "C:\\Users\\47569125\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\47569125\\Desktop\\4to-ProyectoFinal\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\47434208\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\47569125\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
