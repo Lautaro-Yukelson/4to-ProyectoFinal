@@ -4,31 +4,13 @@
 
 <h1 class="title">HakunaMatata</h1>
     <div class="container">
-        <div class="card">
-            <div class="neon_card" id="2048">
-                <a href="./2048/index.html" class="m neon-button">JUGAR</a>
+        @foreach(Juego juego in ViewBag.Juegos){
+            <div class="card">
+                <div class="neon_card">
+                    <a href="@Url.Action("Juego", "Home", new {@juego.idJuego})" class="m neon-button">JUGAR</a>
+                </div>
             </div>
-        </div>
-        <div class="card">
-            <div class="neon_card" id="buscaminas">
-                <a href="../../buscaminas-main/index.html" class="m neon-button">JUGAR</a>
-            </div>
-        </div>
-        <div class="card">
-            <div class="neon_card" id="snake">
-                <a href="./snake-main/" class="m neon-button">JUGAR</a>
-            </div>
-        </div>
-        <div class="card">
-            <div class="neon_card" id="tetris">
-                <a href="./tetris-main/index.html" class="m neon-button" >JUGAR</a>
-            </div>
-        </div>
-        <div class="card">
-            <div class="neon_card" id="wordle">
-                <a href="./wordle/index.html" class="m neon-button" >JUGAR</a>
-            </div>
-        </div>
+        }
     </div>
 
 <script>

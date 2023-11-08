@@ -1,4 +1,5 @@
-const VERDE_CLARO = "#aad751";
+function Snake(){
+	const VERDE_CLARO = "#aad751";
 const VERDE_MEDIO = "#a2d149";
 
 const COLOR_CABEZA = "#2b4996";
@@ -225,3 +226,4 @@ document.addEventListener("DOMContentLoaded", () => {
 	crearTablero();	
 	actualizar();
 })
+}

@@ -31,8 +31,8 @@ public class HomeController : Controller
     }
 
     [HttpGet]
-    public IActionResult Juego(int juego){
-        ViewBag.Juego = juego;
+    public IActionResult Juego(int idJuego){
+        ViewBag.Juego = BD.ObtenerJuego(idJuego);
         return View();
     }
 

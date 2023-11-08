@@ -45,6 +45,13 @@ public static class BD
         }
     }
 
+    public static Juego ObtenerJuego(int idJuego){
+        string sql = "SELECT * FROM Juegos WHERE idJuego = @idJuego";
+        using (SqlConnection db = new SqlConnection(_connectionString)){
+            return db.QueryFirstOrDefault<Juego>(sql, new {idJuego});
+        }
+    }
+
     public static List<Puntaje> ObtenerPuntajes(int idJuego){
         string sql = "SELECT * FROM Puntajes WHERE idJuego = @idJuego";
         using (SqlConnection db = new SqlConnection(_connectionString)){

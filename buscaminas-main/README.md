@@ -1,2 +1,0 @@
-# buscaminas
-Buscaminas con JavaScript
