@@ -77,26 +77,26 @@ function vacio() {
 }
 
 document.addEventListener("keydown", (event) => {
-    switch (event.keyCode) {
-        case 37:
+	switch (event.keyCode) {
+		case 37:
             guardarEstadoActual();
-            LEFT();
+			LEFT();
             break;
-        case 39:
+		case 39:
             guardarEstadoActual();
-            RIGHT();
-            break;
-        case 38:
+			RIGHT();
+			break;
+		case 38:
             guardarEstadoActual();
-            UP();
-            break;
-        case 40:
+			UP();
+			break;
+		case 40:
             guardarEstadoActual();    
             DOWN();
-            break;
-        default:
-            break;
-    }
+			break;
+		default:
+			break;
+	}
     if (vacio()) {   
                 dos();
             }

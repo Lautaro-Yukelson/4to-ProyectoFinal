@@ -61,7 +61,6 @@ main{
 .card .neon_card {
   width: 350px;
   height: 250px;
-  background-image: url(../assets/fotosJuegos/2048Logo.png);
   background-position: center;
   background-size: cover;
   margin: auto;
@@ -76,17 +75,20 @@ main{
   background-blend-mode: color;
 }
 
-#tetris{
-  background-image: url(../assets/fotosJuegos/tetrisLogo.png);
+#_Tetris{
+  background-image: url(../assets/fotosJuegos/Tetris.png);
 }
-#snake{
-  background-image: url(../assets/fotosJuegos/snakeLogo.png);
+#_Snake{
+  background-image: url(../assets/fotosJuegos/Snake.png);
 }
-#buscaminas{
-  background-image: url(../assets/fotosJuegos/buscaminasLogo.png);
+#_Buscaminas{
+  background-image: url(../assets/fotosJuegos/Buscaminas.png);
 }
-#wordle{
-background-image: url(../assets/fotosJuegos/wordleLogo.jpg);
+#_Wordle{
+background-image: url(../assets/fotosJuegos/Wordle.jpg);
+}
+#_2048{
+background-image: url(../assets/fotosJuegos/2048.png);
 }
 
 

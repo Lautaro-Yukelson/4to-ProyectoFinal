@@ -33,7 +33,8 @@ function dropBombas() {
 function crearTablero() {
 	const tablero = document.createElement("div");
 	tablero.id = "tablero";
-	document.body.appendChild(tablero);
+	const buscaContenedor = document.getElementById("buscaContenedor");
+	buscaContenedor.appendChild(tablero);
 }
 
 function checkBombas(casillas, x, y, posBombas) {
