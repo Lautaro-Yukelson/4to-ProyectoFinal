@@ -62,6 +62,7 @@ public class HomeController : Controller
 
     public IActionResult LoginAction(string Nombre, string Contrasena){
         ViewBag.Log = HakunaMatata.IniciarSesion(HttpContext, Nombre, Contrasena);
+        ViewBag.Juegos = HakunaMatata.ObtenerJuegos();
         if (ViewBag.Log == "1"){
             ViewBag.AlertSesion = 1;
             return View("Index", "Home");
