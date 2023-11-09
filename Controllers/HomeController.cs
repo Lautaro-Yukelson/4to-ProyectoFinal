@@ -33,7 +33,20 @@ public class HomeController : Controller
     [HttpGet]
     public IActionResult Juego(int idJuego){
         ViewBag.Juego = BD.ObtenerJuego(idJuego);
-        return View();
+        switch (ViewBag.Juego.Nombre){
+            case "Tetris":
+                return RedirectToAction("Tetris", "Juegos");
+            case "Snake":
+                return RedirectToAction("Snake", "Juegos");
+            case "Buscaminas":
+                return RedirectToAction("Buscaminas", "Juegos");
+            case "2048":
+                return RedirectToAction("_2048", "Juegos");
+            case "Wordle":
+                return RedirectToAction("Wordle", "Juegos");
+            default:
+                return View();
+        }
     }
 
     public IActionResult Perfil(){
