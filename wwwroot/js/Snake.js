@@ -224,4 +224,4 @@ function start() {
 document.addEventListener("DOMContentLoaded", () => {
 	crearTablero();
 	actualizar();
-})
+});

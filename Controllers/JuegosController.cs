@@ -26,38 +26,48 @@ public class JuegosController : Controller
     public IActionResult Tetris()
     {
         ViewBag.Log = HakunaMatata.ObtenerLogStatus(HttpContext);
-        ViewBag.Usuario = BD.ObtenerUsuario("", HakunaMatata.ObtenerIdUsuario(HttpContext));
-        ViewBag.Notificaciones = HakunaMatata.ObtenerNotificaciones("", HakunaMatata.ObtenerIdUsuario(HttpContext));
+        if (ViewBag.Log == "1"){
+            ViewBag.Usuario = BD.ObtenerUsuario("", HakunaMatata.ObtenerIdUsuario(HttpContext));
+            ViewBag.Notificaciones = HakunaMatata.ObtenerNotificaciones("", HakunaMatata.ObtenerIdUsuario(HttpContext));
+        }
         return View();
     }
 
     public IActionResult Snake()
     {
         ViewBag.Log = HakunaMatata.ObtenerLogStatus(HttpContext);
-        ViewBag.Usuario = BD.ObtenerUsuario("", HakunaMatata.ObtenerIdUsuario(HttpContext));
-        ViewBag.Notificaciones = HakunaMatata.ObtenerNotificaciones("", HakunaMatata.ObtenerIdUsuario(HttpContext));
+        if (ViewBag.Log == "1"){
+            ViewBag.Usuario = BD.ObtenerUsuario("", HakunaMatata.ObtenerIdUsuario(HttpContext));
+            ViewBag.Notificaciones = HakunaMatata.ObtenerNotificaciones("", HakunaMatata.ObtenerIdUsuario(HttpContext));
+        }
         return View();
     }
 
     public IActionResult Buscaminas()
     {
         ViewBag.Log = HakunaMatata.ObtenerLogStatus(HttpContext);
-        ViewBag.Usuario = BD.ObtenerUsuario("", HakunaMatata.ObtenerIdUsuario(HttpContext));
-        ViewBag.Notificaciones = HakunaMatata.ObtenerNotificaciones("", HakunaMatata.ObtenerIdUsuario(HttpContext));
+        if (ViewBag.Log == "1"){
+            ViewBag.Usuario = BD.ObtenerUsuario("", HakunaMatata.ObtenerIdUsuario(HttpContext));
+            ViewBag.Notificaciones = HakunaMatata.ObtenerNotificaciones("", HakunaMatata.ObtenerIdUsuario(HttpContext));
+        }
         return View();
     }
     public IActionResult _2048()
     {
         ViewBag.Log = HakunaMatata.ObtenerLogStatus(HttpContext);
-        ViewBag.Usuario = BD.ObtenerUsuario("", HakunaMatata.ObtenerIdUsuario(HttpContext));
-        ViewBag.Notificaciones = HakunaMatata.ObtenerNotificaciones("", HakunaMatata.ObtenerIdUsuario(HttpContext));
+        if (ViewBag.Log == "1"){
+            ViewBag.Usuario = BD.ObtenerUsuario("", HakunaMatata.ObtenerIdUsuario(HttpContext));
+            ViewBag.Notificaciones = HakunaMatata.ObtenerNotificaciones("", HakunaMatata.ObtenerIdUsuario(HttpContext));
+        }
         return View();
     }
     public IActionResult Wordle()
     {
         ViewBag.Log = HakunaMatata.ObtenerLogStatus(HttpContext);
-        ViewBag.Usuario = BD.ObtenerUsuario("", HakunaMatata.ObtenerIdUsuario(HttpContext));
-        ViewBag.Notificaciones = HakunaMatata.ObtenerNotificaciones("", HakunaMatata.ObtenerIdUsuario(HttpContext));
+        if (ViewBag.Log == "1"){
+            ViewBag.Usuario = BD.ObtenerUsuario("", HakunaMatata.ObtenerIdUsuario(HttpContext));
+            ViewBag.Notificaciones = HakunaMatata.ObtenerNotificaciones("", HakunaMatata.ObtenerIdUsuario(HttpContext));
+        }
         return View();
     }
 

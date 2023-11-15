@@ -13,7 +13,7 @@
             <div class="navbar">
                 <div class="navbar_left">
                     <div class="logo">
-                        <a href="#">Hakuna Matata</a>
+                        <a asp-area="" asp-controller="Home" asp-action="Index">Hakuna Matata</a>
                     </div>
                 </div>
                 <div class="navbar_right">
@@ -76,35 +76,37 @@
                 </div>
             </div>
 
-            <div class="popup">
-                <div class="shadow"></div>
-                <div class="inner_popup">
-                    <div class="notification_dd">
-                        <ul class="notification_ul">
-                            <li class="title">
-                                <p>All Notifications</p>
-                                <p class="close"><i class="fas fa-times" aria-hidden="true"></i></p>
-                            </li>
-                            @foreach(Notificacion Noti in ViewBag.Notificaciones){                             
-                                <li class="kfc success">
-                                    <div class="notify_icon">
-                                        <span class="icon"><img src="@Html.Raw(Noti.User.FotoPerfil)" width="40px"></span>  
-                                    </div>
-                                    <div class="notify_data">
-                                        <div class="title">
-                                            @Noti.Titulo
-                                        </div>
-                                        <div class="sub_title">
-                                            @Noti.Descripcion
-                                        </div>
-                                    </div>
+            @if (ViewBag.Log == "1"){
+                <div class="popup">
+                    <div class="shadow"></div>
+                    <div class="inner_popup">
+                        <div class="notification_dd">
+                            <ul class="notification_ul">
+                                <li class="title">
+                                    <p>All Notifications</p>
+                                    <p class="close"><i class="fas fa-times" aria-hidden="true"></i></p>
                                 </li>
-                            }
-                    
-                        </ul>
+                                @foreach(Notificacion Noti in ViewBag.Notificaciones){                             
+                                    <li class="kfc success">
+                                        <div class="notify_icon">
+                                            <span class="icon"><img src="@Html.Raw(Noti.User.FotoPerfil)" width="40px"></span>  
+                                        </div>
+                                        <div class="notify_data">
+                                            <div class="title">
+                                                @Noti.Titulo
+                                            </div>
+                                            <div class="sub_title">
+                                                @Noti.Descripcion
+                                            </div>
+                                        </div>
+                                    </li>
+                                }
+                        
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
 
         </div>
     </header>

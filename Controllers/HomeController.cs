@@ -26,7 +26,7 @@ public class HomeController : Controller
     public IActionResult Index()
     {
         ViewBag.Log = HakunaMatata.ObtenerLogStatus(HttpContext);
-        if (ViewBag.Log != "null"){
+        if (ViewBag.Log == "1"){
             ViewBag.Usuario = HakunaMatata.ObtenerUsuario("", HakunaMatata.ObtenerIdUsuario(HttpContext));
             ViewBag.Notificaciones = HakunaMatata.ObtenerNotificaciones("", HakunaMatata.ObtenerIdUsuario(HttpContext));
         }
@@ -62,6 +62,11 @@ public class HomeController : Controller
 
     public IActionResult Login(){
         ViewBag.Log = HakunaMatata.ObtenerLogStatus(HttpContext);
+        if (ViewBag.Log == "1"){
+            return RedirectToAction("Index", "Home");
+        } else {
+            return View();
+        }
         return View();
     }
 
@@ -69,22 +74,18 @@ public class HomeController : Controller
         ViewBag.Log = HakunaMatata.IniciarSesion(HttpContext, Nombre, Contrasena);
         ViewBag.Juegos = HakunaMatata.ObtenerJuegos();
         if (ViewBag.Log == "1"){
-            ViewBag.AlertSesion = 1;
-            ViewBag.Usuario = HakunaMatata.ObtenerUsuario(Nombre, "");
-            ViewBag.Notificaciones = HakunaMatata.ObtenerNotificaciones("", HakunaMatata.ObtenerIdUsuario(HttpContext));
-            return View("Index", "Home");
+            return RedirectToAction("Index", "Home");
         } else {
-            ViewBag.AlertSesion = 0;
-            return View("Login", "Home");
+            return RedirectToAction("Login", "Home");
         }
     }
 
     public IActionResult Register(){
         ViewBag.Log = HakunaMatata.ObtenerLogStatus(HttpContext);
         if (ViewBag.Log == "1"){
-            return View("Index", "Home");
+            return RedirectToAction("Index", "Home");
         } else {
-            return View("Register", "Home");
+            return View();
         }
     }
 
@@ -99,10 +100,7 @@ public class HomeController : Controller
         }
         string hashContrasena = BCrypt.Net.BCrypt.HashPassword(Contrasena);
         ViewBag.Log = HakunaMatata.Registrarse(HttpContext, Nombre, hashContrasena, Mail, FechaNacimiento, urlArchivo);
-        ViewBag.PopUP = 1;
-        ViewBag.Usuario = HakunaMatata.ObtenerUsuario("", HakunaMatata.ObtenerIdUsuario(HttpContext));
-        ViewBag.Notificaciones = HakunaMatata.ObtenerNotificaciones("", HakunaMatata.ObtenerIdUsuario(HttpContext));
-        return View("Index", "Home");
+        return RedirectToAction("Index", "Home");
     }
 
     public void SubirFotoPerfil(string Nombre, IFormFile MyFile){
