@@ -3,19 +3,12 @@
 }
 
 <h1 class="title">HakunaMatata</h1>
-    <div class="container">
-        @foreach(Juego juego in ViewBag.Juegos){
-            <div class="card">
-                <div class="neon_card" id="_@juego.Nombre">
-                    <a href="@Url.Action("Juego", "Home", new {@juego.idJuego})" class="m neon-button">JUGAR</a>
-                </div>
+<div class="container">
+    @foreach(Juego juego in ViewBag.Juegos){
+        <div class="card">
+            <div class="neon_card" id="_@juego.Nombre">
+                <a href="@Url.Action("Juego", "Home", new {@juego.idJuego})" class="m neon-button">JUGAR</a>
             </div>
-        }
-    </div>
-
-<script>
-    window.addEventListener("DOMContentLoaded", (event) => {
-        checkLogin(@ViewBag.Log, @ViewBag.AlertSesion);
-    });
-</script>
-
+        </div>
+    }
+</div>
