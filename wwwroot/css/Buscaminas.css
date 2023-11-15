@@ -5,8 +5,6 @@
   color: #000;
   font-size: 25px;
   font-weight: 200;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 body {
@@ -14,8 +12,7 @@ body {
   height: 100vh;
   background: linear-gradient(to right bottom, rgb(0, 0, 0), rgb(31, 4, 37), rgb(31, 18, 37), rgb(48, 23, 61), rgb(55, 27, 68), rgb(71, 33, 88), rgb(78, 25, 119), rgb(100, 29, 155), rgb(124, 58, 237));
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
 }
 
 #tablero {
