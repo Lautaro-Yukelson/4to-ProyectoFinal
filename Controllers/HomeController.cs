@@ -28,6 +28,7 @@ public class HomeController : Controller
         ViewBag.Log = HakunaMatata.ObtenerLogStatus(HttpContext);
         if (ViewBag.Log != "null"){
             ViewBag.Usuario = HakunaMatata.ObtenerUsuario("", HakunaMatata.ObtenerIdUsuario(HttpContext));
+            ViewBag.Notificaciones = HakunaMatata.ObtenerNotificaciones("", HakunaMatata.ObtenerIdUsuario(HttpContext));
         }
         ViewBag.Juegos = HakunaMatata.ObtenerJuegos();
         return View();
@@ -55,6 +56,7 @@ public class HomeController : Controller
     public IActionResult Perfil(){
         ViewBag.Log = HakunaMatata.ObtenerLogStatus(HttpContext);
         ViewBag.Usuario = BD.ObtenerUsuario("", HakunaMatata.ObtenerIdUsuario(HttpContext));
+        ViewBag.Notificaciones = HakunaMatata.ObtenerNotificaciones("", HakunaMatata.ObtenerIdUsuario(HttpContext));
         return View();
     }
 
@@ -69,6 +71,7 @@ public class HomeController : Controller
         if (ViewBag.Log == "1"){
             ViewBag.AlertSesion = 1;
             ViewBag.Usuario = HakunaMatata.ObtenerUsuario(Nombre, "");
+            ViewBag.Notificaciones = HakunaMatata.ObtenerNotificaciones("", HakunaMatata.ObtenerIdUsuario(HttpContext));
             return View("Index", "Home");
         } else {
             ViewBag.AlertSesion = 0;
@@ -98,6 +101,7 @@ public class HomeController : Controller
         ViewBag.Log = HakunaMatata.Registrarse(HttpContext, Nombre, hashContrasena, Mail, FechaNacimiento, urlArchivo);
         ViewBag.PopUP = 1;
         ViewBag.Usuario = HakunaMatata.ObtenerUsuario("", HakunaMatata.ObtenerIdUsuario(HttpContext));
+        ViewBag.Notificaciones = HakunaMatata.ObtenerNotificaciones("", HakunaMatata.ObtenerIdUsuario(HttpContext));
         return View("Index", "Home");
     }
 

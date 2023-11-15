@@ -28,22 +28,26 @@
 
                         <div class="notification_dd">
                             <ul class="notification_ul">
-                                <li class="starbucks success">
-                                    <div class="notify_icon">
-                                        <span class="icon"></span>
-                                    </div>
-                                    <div class="notify_data">
-                                        <div class="title">
-                                            Lorem, ipsum dolor.
-                                        </div>
-                                        <div class="sub_title">
-                                            Lorem ipsum dolor sit amet consectetur.
-                                        </div>
-                                    </div>
-                                    <div class="notify_status">
-                                        <p>Success</p>
-                                    </div>
-                                </li>
+                                @{
+                                    int cont = 0;
+                                    foreach(Notificacion Noti in ViewBag.Notificaciones){
+                                        if (cont >= 4) {break;}                              
+                                        <li class="success">
+                                            <div class="notify_icon">
+                                                <img src="@Html.Raw(Noti.User.FotoPerfil)">
+                                            </div>
+                                            <div class="notify_data">
+                                                <div class="title">
+                                                    @Noti.Titulo
+                                                </div>
+                                                <div class="sub_title">
+                                                    @Noti.Descripcion
+                                                </div>
+                                            </div>
+                                        </li>
+                                        cont++;
+                                    }
+                                }
                                 <li class="show_all">
                                     <p class="link">Show All Activities</p>
                                 </li>
@@ -80,7 +84,23 @@
                             <li class="title">
                                 <p>All Notifications</p>
                                 <p class="close"><i class="fas fa-times" aria-hidden="true"></i></p>
-                            </li> 
+                            </li>
+                            @foreach(Notificacion Noti in ViewBag.Notificaciones){                             
+                                <li class="kfc success">
+                                    <div class="notify_icon">
+                                        <span class="icon"><img src="@Html.Raw(Noti.User.FotoPerfil)" width="40px"></span>  
+                                    </div>
+                                    <div class="notify_data">
+                                        <div class="title">
+                                            @Noti.Titulo
+                                        </div>
+                                        <div class="sub_title">
+                                            @Noti.Descripcion
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                    
                         </ul>
                     </div>
                 </div>
@@ -104,3 +124,5 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
+

@@ -1,3 +1,5 @@
+using System.IO;
+using System.Collections.Specialized;
 using System.Diagnostics.Contracts;
 using System.ComponentModel.Design.Serialization;
 using System.Buffers.Text;
@@ -93,5 +95,16 @@ public static class HakunaMatata{
 
     public static List<Puntaje> ObtenerPuntajes(int idJuego){
         return BD.ObtenerPuntajes(idJuego);
+    }
+
+    public static List<Notificacion> ObtenerNotificaciones(string nombre, string idUsuario){
+        List<Notificacion> _ListaNotificaciones = BD.ObtenerNotificaciones(nombre, idUsuario);
+        foreach (Notificacion Noti in _ListaNotificaciones)
+        {
+            string idUsuario1 = "" + Noti.idUsuario1;
+            Noti.User = HakunaMatata.ObtenerUsuario("", idUsuario1);
+        }
+        return _ListaNotificaciones;
+        
     }
 }

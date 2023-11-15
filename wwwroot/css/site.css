@@ -307,7 +307,6 @@ footer{
 
 .notification_dd li .notify_icon .icon{
   display: inline-block;
-  background: url('https://i.imgur.com/MVJNkqW.png') no-repeat 0 0;
 	width: 40px;
 	height: 42px;
 }
@@ -339,10 +338,9 @@ footer{
 }
 
 .notification_dd li .notify_data .sub_title{
-  font-size: 14px;
+  font-size: 12px;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
   margin-top: 5px;
   color: hsl(317 100% 54%);
 }

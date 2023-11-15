@@ -61,10 +61,17 @@ public static class BD
 
     public static Usuario AgregarAmistad(string nombreUsuario, string idUser){
         Usuario user = ObtenerUsuario(nombreUsuario, "0");
-        string sql = "INSERT INTO Amistades(idUsuario1, idUsuario2, Estado) VALUES (@idUsuario1, @idUsuario2, 2)";
+        string sql = "EXEC sp_EnviarSolicitud @idUsuario1, @idUsuario2";
         using (SqlConnection db = new SqlConnection(_connectionString)){
             db.Execute(sql, new {idUsuario1 = Int32.Parse(idUser), idUsuario2 = user.idUsuario});
         }
         return user;
+    }
+
+    public static List<Notificacion> ObtenerNotificaciones(string nombre, string idUsuario){
+        string sql = "SELECT * FROM Notificaciones WHERE idUsuario2 = @idUsuario";
+        using (SqlConnection db = new SqlConnection(_connectionString)){
+            return db.Query<Notificacion>(sql, new {idUsuario}).ToList();
+        }
     }
 }
