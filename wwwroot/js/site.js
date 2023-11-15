@@ -50,8 +50,10 @@ $(".notifications .icon_wrap").click(function(){
 $(".show_all .link").click(function(){
      $(".notifications").removeClass("active");
      $(".popup").show();
+     $(".card").css("z-index", "-2");
 });
 
 $(".close, .shadow").click(function(){
     $(".popup").hide();
+    $(".card").css("z-index", "1000");
 });

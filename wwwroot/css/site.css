@@ -38,12 +38,12 @@ main{
   list-style-type: none;
 }
 
-/*.title{
+.titulo{
   color: hsl(317 100% 54%);
   text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
   font-size: 6rem;
   width: fit-content;
-}*/
+}
 
 .container{
   display: flex;
@@ -284,8 +284,7 @@ footer{
   position: absolute;
   top: 48px;
   right: -15px;
-  user-select: none;
-  background: #fff;
+  user-select: none;  
   border: 1px solid rgb(255,20,189);
   width: 350px;
   height: auto;
@@ -296,7 +295,7 @@ footer{
 }
 
 .notification_dd li {
-    border-bottom: 1px solid #f1f2f4;
+    border-bottom: 1px solid hsl(317 100% 54%);
     padding: 10px 20px;
     display: flex;
     align-items: center;
@@ -335,7 +334,7 @@ footer{
 }
 
 .notification_dd li .notify_data .title{
-  color: #000;
+  color: hsl(317 100% 54%);
   font-weight: 600;
 }
 
@@ -345,6 +344,7 @@ footer{
   overflow: hidden;
   text-overflow: ellipsis;
   margin-top: 5px;
+  color: hsl(317 100% 54%);
 }
 
 .notification_dd li .notify_status p{
@@ -363,11 +363,12 @@ footer{
   padding: 20px;
   display: flex;
   justify-content: center;
+  border: none;
 }
 
 .notification_dd li.show_all p{
   font-weight: 700;
-  color: #3b80f9;
+  color: hsl(317 100% 54%);
   cursor: pointer;
 }
 
@@ -385,12 +386,6 @@ footer{
   margin: 0 10px;
   color: rgb(255,20,189);
   text-shadow: 0 0 10px rgba(255,20,189, 0.8);
-}
-
-.navbar .navbar_right .icon_wrap:hover,
-.navbar .navbar_right .profile.active .icon_wrap,
-.navbar .navbar_right .notifications.active .icon_wrap{
-  color: #3b80f9;
 }
  
 .navbar .profile .profile_dd{
@@ -430,11 +425,6 @@ footer{
   width: 30px;
 }
 
-.navbar .profile .profile_dd ul li:hover{
-  color: #3b80f9;
-  background: #f0f5ff;
-}
-
 .navbar .profile .profile_dd ul li:last-child:hover{
   border-radius: 0 0 50px 50px;
 } 
@@ -442,7 +432,6 @@ footer{
 .navbar .profile .profile_dd ul li.profile_li a:hover {
     background: transparent;
     cursor: default;
-    color: #7f8db0;
 }
 
 .navbar .profile .profile_dd ul li .btn{
@@ -452,13 +441,8 @@ footer{
     border-radius: 3px;
     cursor: pointer;
     text-align: center;
-    background: #3b80f9;
     width: 125px;
     margin: 5px auto 15px;
-}
-
-.navbar .profile .profile_dd ul li .btn:hover{
-  background: #6593e4;
 }
 
 .navbar .profile.active .profile_dd,
@@ -485,6 +469,7 @@ footer{
     height: 100%;
     background: #000;
     opacity: 0.6;
+    z-index: 9000;
 }
 
 .popup .inner_popup {
@@ -494,6 +479,7 @@ footer{
     transform: translate(-50%,-50%);
     width: 100%;
     height: auto;
+    z-index: 10000;
 }
 
 .popup .notification_dd{
@@ -502,6 +488,8 @@ footer{
   margin: 0 auto;
   height: 357px;
   overflow: auto;
+  background-color: rgb(48, 23, 61);
+  color: hsl(317 100% 54%);
 }
 
 .popup .notification_dd:before{
@@ -510,7 +498,6 @@ footer{
 
 .popup .notification_dd li.title{
   font-weight: 700;
-  color: #3b80f9;
   display: flex;
   justify-content: center;
   position: relative;
