@@ -21,7 +21,7 @@ using System.Runtime.InteropServices.ComTypes;
 public static class HakunaMatata{
 
     public static string IniciarSesion(HttpContext context, string Nombre, string Contrasena){
-        Usuario user = HakunaMatata.ObtenerUsuario(Nombre);
+        Usuario user = HakunaMatata.ObtenerUsuario(Nombre, "");
         if (user != null){
             if (BCrypt.Net.BCrypt.Verify(Contrasena, user.Contrasena)){ 
                 string logStatus = "1";
@@ -42,12 +42,12 @@ public static class HakunaMatata{
     }
 
     public static string Registrarse(HttpContext context, string Nombre, string Contrasena, string Mail, DateTime FechaNacimiento, string FotoPerfil){
-        Usuario user = HakunaMatata.ObtenerUsuario(Nombre);
+        Usuario user = HakunaMatata.ObtenerUsuario(Nombre, "");
         if (user == null){
             string logStatus = "1";
             BD.AgregarUsuario(new Usuario(Nombre, Contrasena, Mail, FechaNacimiento, FotoPerfil,"token"));
 
-            user = HakunaMatata.ObtenerUsuario(Nombre);
+            user = HakunaMatata.ObtenerUsuario(Nombre, "");
 
             CookieOptions idUser = new CookieOptions { Expires = DateTime.Now.AddDays(7) };
             context.Response.Cookies.Append("idUser", user.idUsuario.ToString(), idUser);
@@ -83,8 +83,8 @@ public static class HakunaMatata{
         }
     }
 
-    public static Usuario ObtenerUsuario(string Nombre){
-        return BD.ObtenerUsuario(Nombre, "");
+    public static Usuario ObtenerUsuario(string Nombre, string idUsuario){
+        return BD.ObtenerUsuario(Nombre, idUsuario);
     }
 
     public static List<Juego> ObtenerJuegos(){
