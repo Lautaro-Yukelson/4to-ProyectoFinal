@@ -19,7 +19,8 @@ body{
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  background: linear-gradient(to right bottom, rgb(0, 0, 0), rgb(31, 4, 37), rgb(31, 18, 37), rgb(48, 23, 61), rgb(55, 27, 68), rgb(71, 33, 88), rgb(78, 25, 119), rgb(100, 29, 155), rgb(124, 58, 237))
+  background: linear-gradient(to right bottom, rgb(0, 0, 0), rgb(31, 4, 37), rgb(31, 18, 37), rgb(48, 23, 61), rgb(55, 27, 68), rgb(71, 33, 88), rgb(78, 25, 119), rgb(100, 29, 155), rgb(124, 58, 237));
+  overflow-x: hidden;
 }
 
 main{
@@ -239,12 +240,17 @@ footer{
 
 .no-user{
   width: 100px;
-
-  margin-right: 20px;
+  margin-top: 4px;
+  margin-right: 50px;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.no-user a{
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .navbar .navbar_left .logo a{
@@ -390,7 +396,7 @@ footer{
   width: 225px;
 }
 
-.fa-chevron-down{
+.fa-chevron-down, .perfil{
   color: rgb(255,20,189);
   text-shadow: 0 0 10px rgba(255,20,189, 0.8);
 }
@@ -526,7 +532,7 @@ footer{
 
 /*-------------------------FORM-------------------------*/
 
-.login-box {
+.login-box , .perfil {
   width: 400px;
   padding: 40px;
   background: rgba(0,0,0,.5);
@@ -572,16 +578,14 @@ footer{
   transition: .5s;
 }
 
-.login-box .user-box input:focus ~ label,
-.login-box .user-box input:active ~ label,
-.login-box .user-box input:valid~ label{
+.login-box .user-box label{
   top: -20px;
   left: 0;
   color: hsl(317 100% 54%);
   font-size: 12px;
 }
 
-.login-box .user-box input[type="date"]:not(:focus):not(:valid) ~ label {
+.login-box .user-box input[type="date"]label {
   top: 0;
   left: 0;
   color: hsl(317 100% 54%);
@@ -589,7 +593,7 @@ footer{
 }
 
 
-.login-box form button{
+.boton-neon{
   position: relative;
   display: inline-block;
   padding: 10px 20px;
@@ -606,7 +610,7 @@ footer{
   cursor: pointer;
 }
 
-.login-box button:hover {
+.boton-neon:hover {
   background: hsl(317 100% 54%);
   color: #000;
   border-radius: 5px;
@@ -616,12 +620,12 @@ footer{
               0 0 100px hsl(317 100% 54%);
 }
 
-.login-box button span {
+.boton-neon span {
   position: absolute;
   display: block;
 }
 
-.login-box button span:nth-child(1) {
+.boton-neon span:nth-child(1) {
   top: 0;
   left: -100%;
   width: 100%;
@@ -639,7 +643,7 @@ footer{
   }
 }
 
-.login-box button span:nth-child(2) {
+.boton-neon span:nth-child(2) {
   top: -100%;
   right: 0;
   width: 2px;
@@ -658,7 +662,7 @@ footer{
   }
 }
 
-.login-box button span:nth-child(3) {
+.boton-neon span:nth-child(3) {
   bottom: 0;
   right: -100%;
   width: 100%;
@@ -677,7 +681,7 @@ footer{
   }
 }
 
-.login-box button span:nth-child(4) {
+.boton-neon span:nth-child(4) {
   bottom: -100%;
   left: 0;
   width: 2px;
@@ -694,4 +698,28 @@ footer{
   50%,100% {
     bottom: 100%;
   }
+}
+
+.perfil{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.perfil img{
+  border-radius: 50%;
+}
+
+input[type=file]::file-selector-button {
+  margin-right: 20px;
+  border: none;
+  background: hsl(317 100% 54%);
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: #000;
+  cursor: pointer;
+}
+input[type=file]{
+  color: hsl(317, 100%, 45%);
 }
