@@ -60,6 +60,18 @@ public class HomeController : Controller
         return View();
     }
 
+    [HttpPost]
+    public List<Notificacion> AceptarSolicitudAJAX(int id){
+        BD.AceptarAmistad(id);
+        return BD.ObtenerNotificaciones("", HakunaMatata.ObtenerIdUsuario(HttpContext));
+    }
+
+    [HttpPost]
+    public List<Notificacion> RechazarSolicitudAJAX(int id){
+        BD.RechazarAmistad(id);
+        return BD.ObtenerNotificaciones("", HakunaMatata.ObtenerIdUsuario(HttpContext));
+    }
+
     public IActionResult Login(){
         ViewBag.Log = HakunaMatata.ObtenerLogStatus(HttpContext);
         if (ViewBag.Log == "1"){

@@ -258,7 +258,7 @@ footer{
    display: flex;
 }
 
-.navbar .navbar_right img{
+.profile-pic{
   width: 35px;
 }
 
@@ -296,7 +296,7 @@ footer{
 
 .notification_dd li {
     border-bottom: 1px solid hsl(317 100% 54%);
-    padding: 10px 20px;
+    padding: 10px 10px;
     display: flex;
     align-items: center;
 }
@@ -511,6 +511,17 @@ footer{
 
 .popup .notification_dd li.title .close:hover{
   opacity: 0.5;
+}
+
+.noti-ico-container{
+  width: 70px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.noti-ico{
+  width: 25px;
 }
 
 /*-------------------------FORM-------------------------*/

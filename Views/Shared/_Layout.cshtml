@@ -27,14 +27,14 @@
                         <div class="icon_wrap"><i class="far fa-bell"></i></div>
 
                         <div class="notification_dd">
-                            <ul class="notification_ul">
+                            <ul class="notification_ul" id="notification_ul_chiquito">
                                 @{
                                     int cont = 0;
                                     foreach(Notificacion Noti in ViewBag.Notificaciones){
                                         if (cont >= 4) {break;}                              
-                                        <li class="success">
+                                        <li>
                                             <div class="notify_icon">
-                                                <img src="@Html.Raw(Noti.User.FotoPerfil)">
+                                                <img class="profile-pic" src="@Html.Raw(Noti.User.FotoPerfil)">
                                             </div>
                                             <div class="notify_data">
                                                 <div class="title">
@@ -44,6 +44,11 @@
                                                     @Noti.Descripcion
                                                 </div>
                                             </div>
+                                            @if (Noti.Estado == 0){
+                                                <div class="noti-ico-container"><button><img src="~/assets/icos/tick-ico.png" class="noti-ico" onclick="AceptarSolicitud(@Noti.idAmistad)"></button><button><img src="~/assets/icos/x-ico.png" class="noti-ico" onclick="RechazarSolicitud(@Noti.idAmistad)"></button></div>
+                                            } else{
+
+                                            }
                                         </li>
                                         cont++;
                                     }
@@ -57,7 +62,7 @@
                     </div>
                     <div class="profile">
                         <div class="icon_wrap">
-                            <img src="@Html.Raw(ViewBag.Usuario.FotoPerfil)" alt="profile_pic">
+                            <img src="@Html.Raw(ViewBag.Usuario.FotoPerfil)" class="profile-pic" alt="profile_pic">
                             <span class="name">@ViewBag.Usuario.Nombre</span>
                             <i class="fas fa-chevron-down"></i>
                         </div>
@@ -126,5 +131,3 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
-
-

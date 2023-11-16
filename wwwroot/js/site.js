@@ -37,6 +37,33 @@
     });
 }
 
+function AceptarSolicitud(id){
+    $.ajax({
+        type: 'POST',
+        dataType: 'JSON',
+        url: '/Home/AceptarSolicitudAJAX',
+        data: {id},
+        success:
+            function(response){
+                window.location.reload();
+            }
+    });
+}  
+
+
+function RechazarSolicitud(id){
+    $.ajax({
+        type: 'POST',
+        dataType: 'JSON',
+        url: '/Home/RechazarSolicitudAJAX',
+        data: {id},
+        success:
+            function (response){
+                window.location.reload();
+            }
+    });
+}  
+
 $(".profile .icon_wrap").click(function(){
     $(this).parent().toggleClass("active");
     $(".notifications").removeClass("active");

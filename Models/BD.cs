@@ -68,6 +68,20 @@ public static class BD
         return user;
     }
 
+    public static void AceptarAmistad(int id){
+        string sql = "EXEC sp_AceptarAmistad @id";
+        using (SqlConnection db = new SqlConnection(_connectionString)){
+            db.Execute(sql, new {id});
+        }
+    }
+
+    public static void RechazarAmistad(int id){
+        string sql = "EXEC sp_RechazarAmistad @id";
+        using (SqlConnection db = new SqlConnection(_connectionString)){
+            db.Execute(sql, new {id});
+        }
+    }
+
     public static List<Notificacion> ObtenerNotificaciones(string nombre, string idUsuario){
         string sql = "SELECT * FROM Notificaciones WHERE idUsuario2 = @idUsuario";
         using (SqlConnection db = new SqlConnection(_connectionString)){
