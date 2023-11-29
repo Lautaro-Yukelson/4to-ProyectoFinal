@@ -143,7 +143,6 @@ function fin() {
 			console.log("Perdiste!");
 			gameContainer.style.display = "none";
 			divFin.innerHTML = "<h1>Perdiste :(</h1><p>Click para reiniciar</p>";
-			divFin.style.background = "linear-gradient(to right bottom, rgb(0, 0, 0), rgb(31, 4, 37), rgb(31, 18, 37), rgb(48, 23, 61), rgb(55, 27, 68), rgb(71, 33, 88), rgb(78, 25, 119), rgb(100, 29, 155), rgb(124, 58, 237))";
 			divFin.style.display = "flex";
 		}, 10);
 	}
